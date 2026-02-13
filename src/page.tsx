@@ -1,3 +1,9 @@
+import Layout from "./layout";
+
 export default function Home() {
-  return <h1>Hello world</h1>
+  return (
+    <Layout>
+      halo
+    </Layout>
+  )
 }
