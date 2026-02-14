@@ -1,5 +1,19 @@
-import { BriefcaseBusiness } from "lucide-react";
+import { BriefcaseBusiness, EllipsisVertical } from "lucide-react";
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item";
 import Layout from "./layout";
+import { socials } from "./constants/socials";
+import { Svg } from "./components/svg";
+import { ShareDialog } from "./components/share-dialog";
+import { Button } from "./components/ui/button";
+import { Magnet } from "./components/ui/magnet";
 
 export default function Home() {
   return (
@@ -29,7 +43,9 @@ export default function Home() {
         </div>
 
         <div className="w-full text-center">
-          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-balance text-primary mt-5 mb-2">Rizky Ramadhan</h1>
+          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-balance text-primary mt-5 mb-2">
+            Rizky Ramadhan
+          </h1>
 
           <div className="flex justify-center items-center gap-x-3 text-muted-foreground">
             <BriefcaseBusiness className="size-5" />
@@ -37,6 +53,52 @@ export default function Home() {
             <p>Software Engineer</p>
           </div>
         </div>
+      </section>
+
+      <section>
+        <ItemGroup className="flex flex-col gap-y-4">
+          {socials.map((social) => (
+            <Magnet
+              key={social.name}
+              padding={10}
+              disabled={false}
+              magnetStrength={15}
+            >
+              <Item variant="outline" className="rounded-xl">
+                <a
+                  href={`https://${social.host}/${social.username}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-x-3.5 flex-1"
+                >
+                  <ItemMedia className="size-11 p-3 bg-muted rounded-full">
+                    <Svg draw={[social.svg]} className="size-full" />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>{social.name}</ItemTitle>
+                    <ItemDescription>
+                      {social.host} /{" "}
+                      <span className="text-secondary-foreground">
+                        {social.username}
+                      </span>
+                    </ItemDescription>
+                  </ItemContent>
+                </a>
+                <ItemActions>
+                  <ShareDialog>
+                    <Button
+                      variant="outline"
+                      size="icon-sm"
+                      className="rounded-full"
+                    >
+                      <EllipsisVertical />
+                    </Button>
+                  </ShareDialog>
+                </ItemActions>
+              </Item>
+            </Magnet>
+          ))}
+        </ItemGroup>
       </section>
     </Layout>
   );

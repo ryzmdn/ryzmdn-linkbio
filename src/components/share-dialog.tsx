@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, type ReactNode } from "react"
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/ui/dialog"
 import {
   Item,
   ItemActions,
@@ -14,54 +14,61 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/components/ui/item";
-import { socials } from "@/constants/socials";
-import { Check, ChevronRight, Copy, Link, Share } from "lucide-react";
-import { Button } from "./ui/button";
-import { Svg } from "./svg";
+} from "@/components/ui/item"
+import { socials } from "@/constants/socials"
+import { Check, ChevronRight, Copy, Link as LinkIcon } from "lucide-react"
+import { Button } from "./ui/button"
+import { Svg } from "./svg"
 
 interface ShareDialogProps {
-  url?: string;
-  title?: string;
-  description?: string;
+  children?: ReactNode
+  url?: string
+  title?: string
+  description?: string
 }
 
 export function ShareDialog({
-  url = typeof window !== "undefined" ? window.location.href : "",
+  children,
+  url,
   title = "Share link",
   description = "Anyone who has this link will be able to view this.",
-}: ShareDialogProps = {}) {
-  const [copied, setCopied] = useState(false);
+}: ShareDialogProps) {
+  const [copied, setCopied] = useState(false)
+
+  const currentUrl = useMemo(() => {
+    if (url) return url
+    if (typeof window !== "undefined") return window.location.href
+    return ""
+  }, [url])
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      await navigator.clipboard.writeText(currentUrl)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
     } catch (err) {
-      console.error("Failed to copy:", err);
+      console.error("Failed to copy:", err)
     }
-  };
+  }
 
   const handleShare = (social: (typeof socials)[0]) => {
-    if (social.shareUrl) {
-      const shareUrl = social.shareUrl(url);
-      window.open(shareUrl, "_blank", "noopener,noreferrer");
-    }
-  };
+    if (!social.shareUrl) return
+    const shareUrl = social.shareUrl(currentUrl)
+    window.open(shareUrl, "_blank", "noopener,noreferrer")
+  }
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon-sm">
-          <Share />
-        </Button>
+        {children ?? "share"}
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
+
         <ItemGroup className="flex flex-col">
           {socials
             .filter((social) => social.shareUrl)
@@ -74,11 +81,18 @@ export function ShareDialog({
                 onClick={() => handleShare(social)}
               >
                 <ItemMedia className="size-8 bg-muted p-2 rounded-full">
-                  <Svg draw={[social.svg]} className="size-full text-secondary-foreground" />
+                  <Svg
+                    draw={[social.svg]}
+                    className="size-full text-secondary-foreground"
+                  />
                 </ItemMedia>
+
                 <ItemContent>
-                  <ItemTitle>Share on {social.name}</ItemTitle>
+                  <ItemTitle>
+                    Share on {social.name}
+                  </ItemTitle>
                 </ItemContent>
+
                 <ItemActions>
                   <ChevronRight className="size-4" />
                 </ItemActions>
@@ -87,18 +101,22 @@ export function ShareDialog({
 
           <Item variant="outline" size="sm" className="mt-4 p-2.5">
             <ItemMedia>
-              <Link className="size-4" />
+              <LinkIcon className="size-4" />
             </ItemMedia>
+
             <ItemContent>
-              <ItemTitle className="truncate">{url}</ItemTitle>
+              <ItemTitle className="truncate">
+                {currentUrl}
+              </ItemTitle>
             </ItemContent>
+
             <ItemActions>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={handleCopy}
-              >
-                {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
+              <Button size="sm" variant="secondary" onClick={handleCopy}>
+                {copied ? (
+                  <Check className="size-4" />
+                ) : (
+                  <Copy className="size-4" />
+                )}
                 {copied ? "Copied" : "Copy"}
               </Button>
             </ItemActions>
@@ -106,5 +124,5 @@ export function ShareDialog({
         </ItemGroup>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

@@ -5,9 +5,10 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
-import { Link } from "lucide-react";
+import { Link, Share } from "lucide-react";
 import { ToggleTheme } from "@/components/theme-toggle";
 import { ShareDialog } from "./share-dialog";
+import { Button } from "./ui/button";
 
 export function Header() {
   return (
@@ -28,7 +29,11 @@ export function Header() {
         </ItemContent>
         <ItemActions>
           <ToggleTheme />
-          <ShareDialog />
+          <ShareDialog>
+            <Button variant="ghost" size="icon-sm">
+              <Share />
+            </Button>
+          </ShareDialog>
         </ItemActions>
       </Item>
     </header>
