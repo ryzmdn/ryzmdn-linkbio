@@ -5,5 +5,5 @@ export interface Social {
   svg: string;
   className?: string;
   mediaColors?: { icon?: string; background?: string };
-  shareUrl?: (url: string) => string;
+  share?: (url: string) => string;
 }

@@ -6,6 +6,8 @@ import { SocialCard } from "./components/card-social";
 import { BadgeVerified } from "./components/badge-verified";
 
 export default function Home() {
+  const excluded: string[] = ["Email", "Whatsapp"];
+
   return (
     <Layout>
       <section className="w-full bg-transparent pt-28 pb-16">
@@ -34,7 +36,7 @@ export default function Home() {
 
       <section className="w-full bg-transparent">
         <ItemGroup className="flex flex-col gap-y-4">
-          {socials.map((social) => (
+          {socials.filter((s) => !excluded.includes(s.name)).map((social) => (
             <SocialCard key={social.name} social={social} />
           ))}
         </ItemGroup>

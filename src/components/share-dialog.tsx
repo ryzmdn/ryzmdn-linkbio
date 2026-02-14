@@ -1,4 +1,4 @@
-import { useState, useMemo, type ReactNode } from "react";
+import { useState, useMemo, useCallback, type ReactNode } from "react";
 import {
   Dialog,
   DialogContent,
@@ -37,30 +37,34 @@ export function ShareDialog({
   const [copied, setCopied] = useState<boolean>(false);
 
   const currentUrl = useMemo(() => {
-    if (url) return url;
+    if (typeof url === "string") return url;
     if (typeof window !== "undefined") return window.location.href;
     return "";
   }, [url]);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(currentUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
-  };
+  const handleCopy = useCallback(async () => {
+    if (!currentUrl) return;
 
-  const handleShare = (social: (typeof socials)[0]) => {
-    if (!social.shareUrl) return;
-    const shareUrl = social.shareUrl(currentUrl);
-    window.open(shareUrl, "_blank", "noopener,noreferrer");
-  };
+    await navigator.clipboard.writeText(currentUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, [currentUrl]);
+
+  const handleShare = useCallback(
+    (share?: (url: string) => string) => {
+      if (!share || !currentUrl) return;
+
+      const shareUrl = share(String(currentUrl));
+      window.open(shareUrl, "_blank", "noopener,noreferrer");
+    },
+    [currentUrl]
+  );
 
   return (
     <Dialog>
-      <DialogTrigger asChild>{children ?? "share"}</DialogTrigger>
+      <DialogTrigger asChild>
+        {children ?? <span>Share</span>}
+      </DialogTrigger>
 
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -70,24 +74,34 @@ export function ShareDialog({
 
         <ItemGroup className="flex flex-col">
           {socials
-            .filter((social) => social.shareUrl)
+            .filter((s) => s.share)
             .map((social) => (
               <Item
                 key={social.name}
-                variant="default"
                 size="sm"
                 className="px-2 hover:bg-secondary cursor-pointer"
-                onClick={() => handleShare(social)}
+                onClick={() => handleShare(social.share)}
               >
-                <ItemMedia className={cn("size-8 p-2 rounded-full", social.mediaColors?.background)}>
+                <ItemMedia
+                  className={cn(
+                    "size-8 p-2 rounded-full",
+                    social.mediaColors?.background
+                  )}
+                >
                   <Svg
                     draw={[social.svg]}
-                    className={cn("size-full", social.mediaColors?.icon ?? "text-secondary-foreground")}
+                    className={cn(
+                      "size-full",
+                      social.mediaColors?.icon ??
+                        "text-secondary-foreground"
+                    )}
                   />
                 </ItemMedia>
 
                 <ItemContent>
-                  <ItemTitle>Share on {social.name}</ItemTitle>
+                  <ItemTitle>
+                    Share on {social.name}
+                  </ItemTitle>
                 </ItemContent>
 
                 <ItemActions>
@@ -102,17 +116,24 @@ export function ShareDialog({
             </ItemMedia>
 
             <ItemContent>
-              <ItemTitle className="line-clamp-1 w-64">{currentUrl}</ItemTitle>
+              <ItemTitle className="truncate max-w-64">
+                {currentUrl}
+              </ItemTitle>
             </ItemContent>
 
             <ItemActions>
               <Button size="sm" variant="secondary" onClick={handleCopy}>
                 {copied ? (
-                  <Check className="size-4" />
+                  <>
+                    <Check className="size-4" />
+                    Copied
+                  </>
                 ) : (
-                  <Copy className="size-4" />
+                  <>
+                    <Copy className="size-4" />
+                    Copy
+                  </>
                 )}
-                {copied ? "Copied" : "Copy"}
               </Button>
             </ItemActions>
           </Item>

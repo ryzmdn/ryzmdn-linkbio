@@ -1,12 +1,21 @@
+import { shareUrl } from "@/lib/share";
 import type { Social } from "@/types/Social";
 
-const encodeShareUrl = (url: string, text?: string) => {
-  const encoded = encodeURIComponent(url);
-  const encodedText = text ? encodeURIComponent(text) : "";
-  return { encoded, encodedText };
-};
-
 export const socials: Social[] = [
+  {
+    name: "Email",
+    host: "mailto:",
+    username: "youremail",
+    svg: "M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z",
+    share: (url: string, text?: string) =>
+      shareUrl(
+        "mailto:",
+        {
+          subject: text ?? "Check this out",
+          body: url,
+        }
+      ),
+  },
   {
     name: "Instagram",
     host: "instagram.com",
@@ -26,9 +35,11 @@ export const socials: Social[] = [
       icon: "text-stone-100",
       background: "bg-blue-500",
     },
-    shareUrl: (url: string) => {
-      return `https://www.facebook.com/sharer/sharer.php?u=${encodeShareUrl(url)}`;
-    },
+    share: (url: string) =>
+      shareUrl(
+        "https://www.facebook.com/sharer/sharer.php",
+        { u: url }
+      ),
   },
   {
     name: "X (Twitter)",
@@ -39,9 +50,14 @@ export const socials: Social[] = [
       icon: "text-stone-100",
       background: "bg-sky-500",
     },
-    shareUrl: (url: string) => {
-      return `https://x.com/intent/tweet?url=${encodeShareUrl(url)}`;
-    },
+    share: (url: string, text?: string) =>
+      shareUrl(
+        "https://twitter.com/intent/tweet",
+        {
+          url,
+          text: text ?? "",
+        }
+      ),
   },
   {
     name: "YouTube",
@@ -62,9 +78,11 @@ export const socials: Social[] = [
       icon: "text-stone-100",
       background: "bg-cyan-700",
     },
-    shareUrl: (url: string) => {
-      return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeShareUrl(url)}`;
-    },
+    share: (url: string) =>
+      shareUrl(
+        "https://www.linkedin.com/sharing/share-offsite/",
+        { url }
+      ),
   },
   {
     name: "Dribbble",
@@ -95,9 +113,6 @@ export const socials: Social[] = [
       icon: "text-primary",
       background: "bg-primary-foreground",
     },
-    shareUrl: (url: string) => {
-      return `https://github.com/share?url=${encodeShareUrl(url)}`;
-    },
   },
   {
     name: "CodePen",
@@ -110,16 +125,6 @@ export const socials: Social[] = [
     },
   },
   {
-    name: "Messenger",
-    host: "messenger.com",
-    username: "ryzmdn",
-    svg: "M12 0c-6.627 0-12 4.975-12 11.111 0 3.497 1.745 6.616 4.472 8.652v4.237l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.974 12-11.111 0-6.136-5.373-11.111-12-11.111zm1.193 14.963l-3.056-3.259-5.963 3.259 6.559-6.963 3.13 3.259 5.889-3.259-6.559 6.963z",
-    mediaColors: {
-      icon: "text-blue-500",
-      background: "bg-stone-100",
-    },
-  },
-  {
     name: "Whatsapp",
     host: "whatsapp.com",
     username: "ryzmdn",
@@ -128,9 +133,13 @@ export const socials: Social[] = [
       icon: "text-stone-100",
       background: "bg-green-500",
     },
-    shareUrl: (url: string) => {
-      return `https://wa.me/?text=${encodeShareUrl(url)}`;
-    },
+    share: (url: string, text?: string) =>
+      shareUrl(
+        "https://api.whatsapp.com/send",
+        {
+          text: `${text ?? ""} ${url}`.trim(),
+        }
+      ),
   },
   {
     name: "Spotify",
