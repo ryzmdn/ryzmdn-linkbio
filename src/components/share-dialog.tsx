@@ -102,7 +102,7 @@ export function ShareDialog({
             </ItemMedia>
 
             <ItemContent>
-              <ItemTitle className="line-clamp-1 w-60">{currentUrl}</ItemTitle>
+              <ItemTitle className="line-clamp-1 w-64">{currentUrl}</ItemTitle>
             </ItemContent>
 
             <ItemActions>

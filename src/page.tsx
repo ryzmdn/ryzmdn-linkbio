@@ -26,7 +26,7 @@ export default function Home() {
 
           <div className="flex justify-center items-center gap-x-3 text-muted-foreground">
             <BriefcaseBusiness className="size-4" />
-            <div className="w-px h-4 bg-primary/25" />
+            <div className="w-px h-4 bg-primary/20 rounded-full" />
             <p>Software Engineer</p>
           </div>
         </div>
