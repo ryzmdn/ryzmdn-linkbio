@@ -5,8 +5,9 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
-import { Link, Moon, Share } from "lucide-react";
+import { Link, Share } from "lucide-react";
 import { Button } from "./ui/button";
+import { ToggleTheme } from "@/components/theme-toggle";
 
 export function Header() {
   return (
@@ -22,9 +23,7 @@ export function Header() {
           <ItemTitle>LinkBio</ItemTitle>
         </ItemContent>
         <ItemActions>
-          <Button variant="ghost" size="icon-sm">
-            <Moon />
-          </Button>
+          <ToggleTheme />
           <Button variant="ghost" size="icon-sm">
             <Share />
           </Button>

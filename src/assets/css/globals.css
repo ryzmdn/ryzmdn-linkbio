@@ -166,3 +166,9 @@
   font-display: swap;
   src: url("@/assets/fonts/GoogleSansCode-italic.woff2") format("woff2");
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
