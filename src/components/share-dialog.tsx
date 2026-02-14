@@ -1,4 +1,4 @@
-import { useState, useMemo, type ReactNode } from "react"
+import { useState, useMemo, type ReactNode } from "react";
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import {
   Item,
   ItemActions,
@@ -14,17 +14,18 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/components/ui/item"
-import { socials } from "@/constants/socials"
-import { Check, ChevronRight, Copy, Link as LinkIcon } from "lucide-react"
-import { Button } from "./ui/button"
-import { Svg } from "./svg"
+} from "@/components/ui/item";
+import { socials } from "@/constants/socials";
+import { Check, ChevronRight, Copy, Link as LinkIcon } from "lucide-react";
+import { Button } from "./ui/button";
+import { Svg } from "./svg";
+import { cn } from "@/lib/utils";
 
 interface ShareDialogProps {
-  children?: ReactNode
-  url?: string
-  title?: string
-  description?: string
+  children?: ReactNode;
+  url?: string;
+  title?: string;
+  description?: string;
 }
 
 export function ShareDialog({
@@ -33,35 +34,33 @@ export function ShareDialog({
   title = "Share link",
   description = "Anyone who has this link will be able to view this.",
 }: ShareDialogProps) {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState<boolean>(false);
 
   const currentUrl = useMemo(() => {
-    if (url) return url
-    if (typeof window !== "undefined") return window.location.href
-    return ""
-  }, [url])
+    if (url) return url;
+    if (typeof window !== "undefined") return window.location.href;
+    return "";
+  }, [url]);
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(currentUrl)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      await navigator.clipboard.writeText(currentUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy:", err)
+      console.error("Failed to copy:", err);
     }
-  }
+  };
 
   const handleShare = (social: (typeof socials)[0]) => {
-    if (!social.shareUrl) return
-    const shareUrl = social.shareUrl(currentUrl)
-    window.open(shareUrl, "_blank", "noopener,noreferrer")
-  }
+    if (!social.shareUrl) return;
+    const shareUrl = social.shareUrl(currentUrl);
+    window.open(shareUrl, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        {children ?? "share"}
-      </DialogTrigger>
+      <DialogTrigger asChild>{children ?? "share"}</DialogTrigger>
 
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -80,17 +79,15 @@ export function ShareDialog({
                 className="px-2 hover:bg-secondary cursor-pointer"
                 onClick={() => handleShare(social)}
               >
-                <ItemMedia className="size-8 bg-muted p-2 rounded-full">
+                <ItemMedia className={cn("size-8 p-2 rounded-full", social.mediaColors?.background)}>
                   <Svg
                     draw={[social.svg]}
-                    className="size-full text-secondary-foreground"
+                    className={cn("size-full", social.mediaColors?.icon ?? "text-secondary-foreground")}
                   />
                 </ItemMedia>
 
                 <ItemContent>
-                  <ItemTitle>
-                    Share on {social.name}
-                  </ItemTitle>
+                  <ItemTitle>Share on {social.name}</ItemTitle>
                 </ItemContent>
 
                 <ItemActions>
@@ -105,9 +102,7 @@ export function ShareDialog({
             </ItemMedia>
 
             <ItemContent>
-              <ItemTitle className="truncate">
-                {currentUrl}
-              </ItemTitle>
+              <ItemTitle className="line-clamp-1 w-60">{currentUrl}</ItemTitle>
             </ItemContent>
 
             <ItemActions>
@@ -124,5 +119,5 @@ export function ShareDialog({
         </ItemGroup>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
