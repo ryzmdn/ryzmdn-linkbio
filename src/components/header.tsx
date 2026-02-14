@@ -5,8 +5,9 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
-import { Link, Moon, Share } from "lucide-react";
-import { Button } from "./ui/button";
+import { Link } from "lucide-react";
+import { ToggleTheme } from "@/components/theme-toggle";
+import { ShareDialog } from "./share-dialog";
 
 export function Header() {
   return (
@@ -14,7 +15,11 @@ export function Header() {
       id="appHeader"
       className="absolute top-5 left-1/2 -translate-x-1/2 w-full h-auto max-w-xl"
     >
-      <Item variant="outline" size="sm" className="py-2 backdrop-blur-sm rounded-full">
+      <Item
+        variant="outline"
+        size="sm"
+        className="py-2 backdrop-blur-sm rounded-full"
+      >
         <ItemMedia>
           <Link className="size-5" />
         </ItemMedia>
@@ -22,12 +27,8 @@ export function Header() {
           <ItemTitle>LinkBio</ItemTitle>
         </ItemContent>
         <ItemActions>
-          <Button variant="ghost" size="icon-sm">
-            <Moon />
-          </Button>
-          <Button variant="ghost" size="icon-sm">
-            <Share />
-          </Button>
+          <ToggleTheme />
+          <ShareDialog />
         </ItemActions>
       </Item>
     </header>
