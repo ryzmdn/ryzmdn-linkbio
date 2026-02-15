@@ -116,7 +116,7 @@ export function ShareDialog({
             </ItemMedia>
 
             <ItemContent>
-              <ItemTitle className="truncate max-w-64">
+              <ItemTitle className="line-clamp-1 max-w-60">
                 {currentUrl}
               </ItemTitle>
             </ItemContent>

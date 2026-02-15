@@ -43,7 +43,7 @@ export function SocialCard({ social }: Readonly<{ social: Social }>) {
           <ShareDialog url={`https://${social.host}/${social.username}`}>
             <Button
               variant="outline"
-              size="icon-sm"
+              size="icon-xs"
               className="rounded-full"
             >
               <EllipsisVertical />
