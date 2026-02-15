@@ -14,6 +14,7 @@ import {
   DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import Picture from "@/assets/images/picture.webp";
 
 export default function Home() {
   const excluded: string[] = ["Email", "Whatsapp"];
@@ -29,7 +30,7 @@ export default function Home() {
             >
               <div className="shrink-0 size-full overflow-hidden rounded-full transition-all duration-300 group-hover:brightness-50">
                 <img
-                  src="https://avatars.githubusercontent.com/u/134961138?v=4"
+                  src={Picture}
                   alt="Profile Picture"
                   className="size-full group-hover:scale-150 bg-background shadow-xl ring-1 ring-foreground/10 transition-transform duration-500"
                 />
