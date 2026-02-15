@@ -23,25 +23,40 @@ export default function Home() {
         </div>
 
         <div className="w-full text-center">
-          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-balance text-primary mt-5 mb-2">
-            Rizky Ramadhan
-          </h1>
+          <AnimateBlur delay={0.25} direction="up" inView>
+            <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-balance text-primary mt-5 mb-2">
+              Rizky Ramadhan
+            </h1>
+          </AnimateBlur>
 
           <div className="flex justify-center items-center gap-x-3 text-muted-foreground">
-            <BriefcaseBusiness className="size-4" />
-            <div className="w-px h-4 bg-primary/20 rounded-full" />
-            <p>Software Engineer</p>
+            <AnimateBlur delay={0.25 * 1} direction="left" inView>
+              <BriefcaseBusiness className="size-4" />
+            </AnimateBlur>
+            <AnimateBlur delay={0.25 * 1.5} direction="right" inView>
+              <div className="w-px h-4 bg-primary/20 rounded-full" />
+            </AnimateBlur>
+            <AnimateBlur delay={0.25 * 2} direction="right" inView>
+              <p>Software Engineer</p>
+            </AnimateBlur>
           </div>
         </div>
       </section>
 
       <section className="w-full bg-transparent">
         <ItemGroup className="flex flex-col gap-y-4">
-          {socials.filter((s) => !excluded.includes(s.name)).map((social, index) => (
-            <AnimateBlur key={social.name} direction="up" delay={0.15 + index * 0.05} inView>
-              <SocialCard social={social} />
-            </AnimateBlur>
-          ))}
+          {socials
+            .filter((s) => !excluded.includes(s.name))
+            .map((social, index) => (
+              <AnimateBlur
+                key={social.name}
+                direction="up"
+                delay={0.15 + index * 0.05}
+                inView
+              >
+                <SocialCard social={social} />
+              </AnimateBlur>
+            ))}
         </ItemGroup>
       </section>
     </Layout>
