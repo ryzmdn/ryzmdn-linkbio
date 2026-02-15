@@ -4,5 +4,6 @@ export interface Social {
   username: string;
   svg: string;
   className?: string;
-  shareUrl?: (url: string) => string;
+  mediaColors?: { icon?: string; background?: string };
+  share?: (url: string) => string;
 }
