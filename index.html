@@ -1,13 +1,133 @@
 <!doctype html>
-<html lang="en">
+<html lang="id" class="overflow-y-auto scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ryzmdn-linkbio</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <title>
+      Hello Rizz &ndash; Personal Link Bio
+    </title>
+    <meta
+      name="title"
+      content="Hello Rizz - Personal Link Bio"
+    />
+    <meta
+      name="description"
+      content="Discover Rizky's portfolio, blog, social media, and creative projects all in one place. Connect via GitHub, Twitter, Spotify, and more."
+    />
+    <meta
+      name="keywords"
+      content="linkinbio, link bio, portfolio, social links, developer, creator, github, twitter, spotify, ryzmdn, riz, rizky ramadhan"
+    />
+    <meta name="author" content="Rizky Ramadhan" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="language" content="en-US" />
+    <meta name="revisit-after" content="7 days" />
+
+    <link rel="canonical" href="https://ryzmdn.net/" />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Hello Rizz - Personal Link Bio"
+    />
+    <meta
+      property="og:description"
+      content="Discover Rizky's portfolio, blog, social media, and creative projects all in one place."
+    />
+    <meta property="og:image" content="https://ryzmdn.net/images/light.png" />
+    <meta property="og:image:alt" content="Rizky's Link Bio Website" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://ryzmdn.net/" />
+    <meta property="og:site_name" content="Link Bio" />
+    <meta property="og:locale" content="id_ID" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Link Bio - Connect with Rizky" />
+    <meta
+      name="twitter:description"
+      content="Discover Rizky's portfolio, blog, social media, and creative projects all in one place."
+    />
+    <meta name="twitter:image" content="https://ryzmdn.net/images/light.png" />
+    <meta name="twitter:creator" content="@ryzmdn" />
+    <meta name="twitter:site" content="@ryzmdn" />
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Link Bio" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="dns-prefetch" href="https://open.spotify.com" />
+    <link rel="dns-prefetch" href="https://twitter.com" />
+    <link rel="dns-prefetch" href="https://github.com" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rizky",
+        "url": "https://ryzmdn.net/",
+        "image": "https://ryzmdn.net/images/light.png",
+        "description": "Full-stack developer, content creator, and open-source enthusiast",
+        "sameAs": [
+          "https://twitter.com/ryzmdn",
+          "https://github.com/ryzmdn",
+        ],
+        "jobTitle": "Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Independent"
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Link Bio",
+        "url": "https://ryzmdn.net/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://ryzmdn.net/?q={search_term_string}"
+          }
+        }
+      }
+    </script>
+
+    <base href="/" />
   </head>
-  <body>
-    <div id="root"></div>
+  <body class="font-sans antialiased w-full bg-background">
+    <div
+      id="root"
+      class="min-w-xs w-full max-w-7xl mx-auto bg-transparent px-4 sm:px-6 lg:px-8"
+    ></div>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
