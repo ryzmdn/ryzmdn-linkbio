@@ -4,6 +4,7 @@ import Layout from "./layout";
 import { socials } from "./constants/socials";
 import { SocialCard } from "./components/card-social";
 import { BadgeVerified } from "./components/badge-verified";
+import { AnimateBlur } from "./components/ui/animate-blur";
 
 export default function Home() {
   const excluded: string[] = ["Email", "Whatsapp"];
@@ -36,8 +37,10 @@ export default function Home() {
 
       <section className="w-full bg-transparent">
         <ItemGroup className="flex flex-col gap-y-4">
-          {socials.filter((s) => !excluded.includes(s.name)).map((social) => (
-            <SocialCard key={social.name} social={social} />
+          {socials.filter((s) => !excluded.includes(s.name)).map((social, index) => (
+            <AnimateBlur key={social.name} direction="up" delay={0.15 + index * 0.05} inView>
+              <SocialCard social={social} />
+            </AnimateBlur>
           ))}
         </ItemGroup>
       </section>
