@@ -62,7 +62,7 @@ export default function Home() {
 
         <div className="w-full text-center">
           <AnimateBlur delay={0.25} direction="up" inView className="w-max mx-auto">
-            <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-balance text-primary mt-5 mb-2">
+            <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight text-balance text-primary mt-5 mb-2 sm:text-3xl">
               Rizky Ramadhan <BadgeVerified />
             </h1>
           </AnimateBlur>
