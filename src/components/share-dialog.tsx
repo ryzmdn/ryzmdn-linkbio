@@ -111,7 +111,7 @@ export function ShareDialog({
             ))}
 
           <Item variant="outline" size="sm" className="mt-4 p-2.5">
-            <ItemMedia>
+            <ItemMedia className="hidden sm:block">
               <LinkIcon className="size-4" />
             </ItemMedia>
 
@@ -125,12 +125,12 @@ export function ShareDialog({
               <Button size="sm" variant="secondary" onClick={handleCopy}>
                 {copied ? (
                   <>
-                    <Check className="size-4" />
+                    <Check className="hidden size-4 sm:block" />
                     Copied
                   </>
                 ) : (
                   <>
-                    <Copy className="size-4" />
+                    <Copy className="hidden size-4 sm:block" />
                     Copy
                   </>
                 )}

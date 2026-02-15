@@ -54,7 +54,8 @@ export function Header() {
         >
           <ItemMedia className="text-primary">
             <Link className="size-4" />
-            <span className="text-pretty">LinkBio</span>
+            <span className="hidden text-pretty sm:block">Ryzmdn</span>
+            <span className="block text-pretty sm:hidden">Riz</span>
           </ItemMedia>
           <ItemContent>
             <ItemTitle className="text-[0.5rem] font-normal text-muted-foreground mx-auto sm:text-xs">
@@ -63,7 +64,7 @@ export function Header() {
               </time>
             </ItemTitle>
           </ItemContent>
-          <ItemActions>
+          <ItemActions className="max-sm:gap-1">
             <ToggleTheme />
             <ShareDialog>
               <Button variant="ghost" size="icon-sm">
