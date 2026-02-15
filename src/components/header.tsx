@@ -39,7 +39,7 @@ export function Header() {
   return (
     <header
       id="appHeader"
-      className="absolute top-5 left-1/2 -translate-x-1/2 w-full h-auto max-w-xl"
+      className="absolute top-5 left-1/2 -translate-x-1/2 w-full h-auto max-w-xl px-4 sm:px-0"
     >
       <Item
         variant="outline"
@@ -51,7 +51,7 @@ export function Header() {
           <span className="text-pretty">LinkBio</span>
         </ItemMedia>
         <ItemContent>
-          <ItemTitle className="text-xs! font-normal! text-muted-foreground mx-auto">
+          <ItemTitle className="text-[0.5rem] font-normal text-muted-foreground mx-auto sm:text-xs">
             <time dateTime={time} className="font-mono">{time}</time>
           </ItemTitle>
         </ItemContent>
