@@ -1,5 +1,6 @@
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
+import { ProgressiveBlur } from "./components/ui/progressive-blur";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <Footer />
+      <ProgressiveBlur height="40px" />
     </>
   );
 }

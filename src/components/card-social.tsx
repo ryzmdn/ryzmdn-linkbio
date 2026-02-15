@@ -16,7 +16,7 @@ import type { Social } from "@/types/Social";
 
 export function SocialCard({ social }: Readonly<{ social: Social }>) {
   return (
-    <Magnet padding={10} magnetStrength={15}>
+    <Magnet padding={10} magnetStrength={15} className="w-full">
       <Item variant="outline" className="rounded-xl">
         <a
           href={`https://${social.host}/${social.username}`}
