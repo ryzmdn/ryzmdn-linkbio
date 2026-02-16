@@ -60,6 +60,14 @@ export function ShareDialog({
     [currentUrl]
   );
 
+  const text: string = currentUrl;
+  const maxText: number = 25;
+
+  const truncatedText: string =
+    text.length > maxText
+      ? text.slice(0, maxText) + "..."
+      : text;
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -117,7 +125,7 @@ export function ShareDialog({
 
             <ItemContent>
               <ItemTitle className="line-clamp-1 max-w-60">
-                {currentUrl}
+                {truncatedText}
               </ItemTitle>
             </ItemContent>
 

@@ -14,6 +14,7 @@ import { AnimateBlur } from "./ui/animate-blur";
 
 export function Header() {
   const [time, setTime] = useState<string>("");
+  const [smallDevice, setSmallDevice] = useState<boolean>(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -35,6 +36,22 @@ export function Header() {
     const interval = setInterval(updateTime, 1000);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 399px)");
+
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setSmallDevice(e.matches);
+    };
+
+    handleChange(mediaQuery);
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
   }, []);
 
   return (
@@ -65,9 +82,9 @@ export function Header() {
             </ItemTitle>
           </ItemContent>
           <ItemActions className="max-sm:gap-1">
-            <ToggleTheme />
+            <ToggleTheme size={smallDevice} />
             <ShareDialog>
-              <Button variant="ghost" size="icon-sm">
+              <Button variant="ghost" size={smallDevice ? "icon-xs" : "icon-sm"}>
                 <Share />
               </Button>
             </ShareDialog>
