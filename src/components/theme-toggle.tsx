@@ -1,18 +1,23 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { motion, useMotionValue, useTransform } from "motion/react";
 import { ThemeProviderContext } from "./theme-provider";
-import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 
-export const ToggleTheme = ({
+interface Props extends React.ComponentPropsWithoutRef<"button"> {
+  size?: boolean;
+  duration?: number;
+}
+
+export function ToggleTheme({
   className,
   size,
-}: {
-  className?: string;
-  size?: boolean;
-}) => {
+  duration = 400,
+  ...props
+}: Readonly<Props>) {
   const { theme, setTheme } = useContext(ThemeProviderContext);
-  const [mounted, setMounted] = useState<boolean>(false);
+  const [mounted, setMounted] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -20,35 +25,75 @@ export const ToggleTheme = ({
 
   const isDark = mounted ? theme === "dark" : false;
 
-  const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
+  const buttonSize = size ? "icon-xs" : "icon-sm";
+
+  const toggleTheme = useCallback(async () => {
+    if (!buttonRef.current || !document.startViewTransition) {
+      const newTheme = isDark ? "light" : "dark";
+      setTheme(newTheme);
+      return;
+    }
+
+    await document.startViewTransition(() => {
+      flushSync(() => {
+        const newTheme = isDark ? "light" : "dark";
+        setTheme(newTheme);
+      });
+    }).ready;
+
+    const { top, left, width, height } =
+      buttonRef.current.getBoundingClientRect();
+    const x = left + width / 2;
+    const y = top + height / 2;
+    const maxRadius = Math.hypot(
+      Math.max(left, window.innerWidth - left),
+      Math.max(top, window.innerHeight - top)
+    );
+
+    document.documentElement.animate(
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${maxRadius}px at ${x}px ${y}px)`,
+        ],
+      },
+      {
+        duration,
+        easing: "ease-in-out",
+        pseudoElement: "::view-transition-new(root)",
+      }
+    );
+  }, [isDark, duration, setTheme]);
 
   if (!mounted) {
     return (
       <Button
-        className={cn("px-2.5", className)}
+        ref={buttonRef}
         variant="ghost"
-        size={size ? "icon-xs" : "icon-sm"}
+        size={buttonSize}
+        className={className}
         disabled
+        {...props}
       >
-        <div className="size-5" />
+        <span className="sr-only">Toggle theme</span>
       </Button>
     );
   }
 
   return (
     <Button
-      onClick={toggleTheme}
-      className={cn("px-2.5", className)}
+      ref={buttonRef}
       variant="ghost"
-      size={size ? "icon-xs" : "icon-sm"}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      size={buttonSize}
+      className={className}
+      onClick={toggleTheme}
+      {...props}
     >
       <SolarSwitch isDark={isDark} />
+      <span className="sr-only">Toggle theme</span>
     </Button>
   );
-};
+}
 
 const SolarSwitch = ({ isDark }: { isDark: boolean }) => {
   const duration = 0.7;
