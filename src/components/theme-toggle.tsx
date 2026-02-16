@@ -9,10 +9,12 @@ import { Button } from "./ui/button";
 
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number;
+  size?: boolean;
 }
 
 export const ToggleTheme = ({
   className,
+  size,
   duration = 400,
   ...props
 }: AnimatedThemeTogglerProps) => {
@@ -65,7 +67,7 @@ export const ToggleTheme = ({
     <Button
       ref={buttonRef}
       variant="ghost"
-      size="icon-sm"
+      size={size ? "icon-xs" : "icon-sm"}
       onClick={toggleTheme}
       className={cn(className)}
       {...props}
