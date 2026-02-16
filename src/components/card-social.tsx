@@ -16,7 +16,7 @@ import type { Social } from "@/types/Social";
 
 export function SocialCard({ social }: Readonly<{ social: Social }>) {
   const text: string = social.username;
-  const maxText: number = 6;
+  const maxText: number = 7;
 
   const truncatedText: string =
     text.length > maxText
