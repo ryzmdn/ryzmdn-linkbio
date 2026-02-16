@@ -5,14 +5,15 @@ import { ThemeProviderContext } from "./theme-provider";
 import { Button } from "./ui/button";
 
 interface Props extends React.ComponentPropsWithoutRef<"button"> {
-  isSmall?: boolean;
+  size?: boolean;
   duration?: number;
 }
 
 export function ToggleTheme({
   className,
-  isSmall,
+  size,
   duration = 400,
+  ...props
 }: Readonly<Props>) {
   const { theme, setTheme } = useContext(ThemeProviderContext);
   const [mounted, setMounted] = useState(false);
@@ -23,6 +24,8 @@ export function ToggleTheme({
   }, []);
 
   const isDark = mounted ? theme === "dark" : false;
+
+  const buttonSize = size ? "icon-xs" : "icon-sm";
 
   const toggleTheme = useCallback(async () => {
     if (!buttonRef.current || !document.startViewTransition) {
@@ -38,7 +41,8 @@ export function ToggleTheme({
       });
     }).ready;
 
-    const { top, left, width, height } = buttonRef.current.getBoundingClientRect();
+    const { top, left, width, height } =
+      buttonRef.current.getBoundingClientRect();
     const x = left + width / 2;
     const y = top + height / 2;
     const maxRadius = Math.hypot(
@@ -66,9 +70,10 @@ export function ToggleTheme({
       <Button
         ref={buttonRef}
         variant="ghost"
-        size={isSmall ? "icon-xs" : "icon-sm"}
+        size={buttonSize}
         className={className}
         disabled
+        {...props}
       >
         <span className="sr-only">Toggle theme</span>
       </Button>
@@ -79,9 +84,10 @@ export function ToggleTheme({
     <Button
       ref={buttonRef}
       variant="ghost"
-      size={isSmall ? "icon-xs" : "icon-sm"}
+      size={buttonSize}
       className={className}
       onClick={toggleTheme}
+      {...props}
     >
       <SolarSwitch isDark={isDark} />
       <span className="sr-only">Toggle theme</span>
