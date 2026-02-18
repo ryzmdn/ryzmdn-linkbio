@@ -25,7 +25,7 @@ export function SocialCard({ social }: Readonly<{ social: Social }>) {
 
   return (
     <Magnet padding={10} magnetStrength={15} className="w-full">
-      <Item variant="outline" className="rounded-xl">
+      <Item variant="outline" className="backdrop-blur-xs bg-background rounded-xl">
         <a
           href={`https://${social.host}/${social.username}`}
           target="_blank"
