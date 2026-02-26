@@ -16,16 +16,13 @@ import type { Social } from "@/types/Social";
 
 export function SocialCard({ social }: Readonly<{ social: Social }>) {
   const text: string = social.username;
-  const maxText: number = 7;
+  const maxText: number = 9;
 
-  const truncatedText: string =
-    text.length > maxText
-      ? text.slice(0, maxText) + "..."
-      : text;
+  const truncatedText: string = text.length > maxText ? text.slice(0, maxText) + "..." : text;
 
   return (
     <Magnet padding={10} magnetStrength={15} className="w-full">
-      <Item variant="outline" className="rounded-xl">
+      <Item variant="outline" className="size-full bg-background/50 rounded-xl">
         <a
           href={`https://${social.host}/${social.username}`}
           target="_blank"
@@ -39,7 +36,7 @@ export function SocialCard({ social }: Readonly<{ social: Social }>) {
             )}
           >
             <Svg
-              draw={[social.svg]}
+              draw={Array.isArray(social.svg) ? social.svg : [social.svg]}
               className={cn(
                 "size-full",
                 social.mediaColors?.icon ?? "text-primary",
@@ -51,9 +48,7 @@ export function SocialCard({ social }: Readonly<{ social: Social }>) {
             <ItemTitle>{social.name}</ItemTitle>
             <ItemDescription className="text-xs/5 line-clamp-1 sm:text-sm/6">
               {social.host} /{" "}
-              <span className="text-secondary-foreground">
-                {truncatedText}
-              </span>
+              <span className="text-secondary-foreground">{truncatedText}</span>
             </ItemDescription>
           </ItemContent>
         </a>
