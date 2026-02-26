@@ -26,12 +26,13 @@ export default function Home() {
           <DialogTrigger asChild>
             <Button
               variant="outline"
-              className="relative block group size-32 mx-auto p-2! rounded-full"
+              className="relative block group size-32 mx-auto p-1! rounded-full"
             >
               <div className="shrink-0 size-full overflow-hidden rounded-full transition-all duration-300 group-hover:brightness-50">
                 <img
                   src={Picture}
                   alt="Profile Picture"
+                  loading="lazy"
                   className="size-full group-hover:scale-150 bg-background shadow-xl ring-1 ring-foreground/10 transition-transform duration-500"
                 />
               </div>
@@ -48,9 +49,9 @@ export default function Home() {
             <DialogHeader>
               <DialogTitle>About Me</DialogTitle>
               <DialogDescription>
-                Hi, I'm Rizky Ramadhan 👋  
-                A passionate frontend developer focused on clean architecture,
-                performance optimization, and continuous learning.
+                Hi, I'm Rizky Ramadhan 👋 A passionate frontend developer
+                focused on clean architecture, performance optimization, and
+                continuous learning.
               </DialogDescription>
             </DialogHeader>
 
@@ -61,13 +62,18 @@ export default function Home() {
         </Dialog>
 
         <div className="w-full text-center">
-          <AnimateBlur delay={0.25} direction="up" inView className="w-max mx-auto">
+          <AnimateBlur
+            delay={0.25}
+            direction="up"
+            inView
+            className="w-max mx-auto"
+          >
             <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight text-balance text-primary mt-5 mb-2 sm:text-3xl">
               Rizky Ramadhan <BadgeVerified />
             </h1>
           </AnimateBlur>
 
-          <div className="flex justify-center items-center gap-x-3 text-muted-foreground">
+          <div className="flex justify-center items-center gap-x-3 text-secondary-foreground">
             <AnimateBlur delay={0.25 * 1} direction="left" inView>
               <BriefcaseBusiness className="size-4" />
             </AnimateBlur>
@@ -78,6 +84,12 @@ export default function Home() {
               <p>Software Engineer</p>
             </AnimateBlur>
           </div>
+
+          <p className="text-base/7 text-accent-foreground mt-4">
+            I have a knack for software engineering with an interest in building
+            scalable and efficient web and mobile systems, designed using modern
+            architecture approaches and industry best practices.
+          </p>
         </div>
       </section>
 
