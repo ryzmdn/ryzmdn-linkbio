@@ -9,20 +9,7 @@
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "categories": ["productivity", "utilities"],
-  "screenshots": [
-    {
-      "src": "/images/light.png",
-      "sizes": "540x720",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/dark.png",
-      "sizes": "540x720",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
+
   "icons": [
     {
       "src": "/favicons/android-chrome-192x192.png",
