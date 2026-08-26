@@ -67,12 +67,13 @@ export function Header() {
         <Item
           variant="outline"
           size="sm"
-          className="py-2 backdrop-blur-sm rounded-full"
+          className="group py-2 backdrop-blur-sm rounded-full"
         >
-          <ItemMedia className="text-primary">
-            <Link className="size-4" />
+          <ItemMedia className="relative text-primary">
+            <Link className="size-4 group-hover:rotate-90 transition-transform duration-300" />
             <span className="hidden text-pretty sm:block">Ryzmdn</span>
             <span className="block text-pretty sm:hidden">Riz</span>
+            <a href="/" className="absolute inset-0" />
           </ItemMedia>
           <ItemContent>
             <ItemTitle className="text-[0.5rem] font-normal text-muted-foreground mx-auto sm:text-xs">

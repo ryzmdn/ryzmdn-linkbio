@@ -48,7 +48,7 @@ export default function Home() {
             </AnimateBlur>
           </div>
 
-          <p className="text-muted-foreground leading-7 mt-4">
+          <p className="text-muted-foreground text-sm/6 mt-4">
             I have a knack for software engineering with an interest in building
             scalable and efficient web and mobile systems, designed using modern
             architecture approaches and industry best practices.
