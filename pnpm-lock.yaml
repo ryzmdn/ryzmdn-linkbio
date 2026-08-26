@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@tailwindcss/vite':
-        specifier: ^4.1.18
+        specifier: ^4.3.3
         version: 4.3.3(vite@8.2.2(@types/node@26.3.0)(jiti@2.7.0))
       class-variance-authority:
         specifier: ^0.7.1
