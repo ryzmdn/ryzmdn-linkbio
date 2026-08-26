@@ -27,6 +27,7 @@ export function SocialCard({ social }: Readonly<{ social: Social }>) {
           href={`https://${social.host}/${social.username}`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`Open ${social.name} profile (${social.username})`}
           className="flex items-center gap-x-3.5 flex-1"
         >
           <ItemMedia
@@ -55,7 +56,12 @@ export function SocialCard({ social }: Readonly<{ social: Social }>) {
 
         <ItemActions className="shrink-0!">
           <ShareDialog url={`https://${social.host}/${social.username}`}>
-            <Button variant="outline" size="icon-xs" className="rounded-full">
+            <Button
+              variant="outline"
+              size="icon-xs"
+              className="rounded-full"
+              aria-label={`Share ${social.name} profile link`}
+            >
               <EllipsisVertical />
             </Button>
           </ShareDialog>

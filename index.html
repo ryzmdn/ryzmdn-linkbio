@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id" class="overflow-y-auto scroll-smooth">
+<html lang="en" class="overflow-y-auto">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -7,64 +7,78 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
 
-    <title>
-      Hello Rizz &ndash; Personal Link Bio
-    </title>
+    <title>Rizky Ramadhan &ndash; Software Engineer | Link Bio</title>
     <meta
       name="title"
-      content="Hello Rizz - Personal Link Bio"
+      content="Rizky Ramadhan - Software Engineer | Link Bio"
     />
     <meta
       name="description"
-      content="Discover Rizky's portfolio, blog, social media, and creative projects all in one place. Connect via GitHub, Twitter, Spotify, and more."
+      content="Official personal link bio of Rizky Ramadhan, a Software Engineer focused on building scalable, efficient web and mobile systems. Connect via GitHub, LinkedIn, X, and more."
     />
     <meta
       name="keywords"
-      content="linkinbio, link bio, portfolio, social links, developer, creator, github, twitter, spotify, ryzmdn, riz, rizky ramadhan"
+      content="Rizky Ramadhan, ryzmdn, software engineer, web developer, link in bio, portfolio, clean architecture, frontend developer, fullstack developer, react, typescript"
     />
     <meta name="author" content="Rizky Ramadhan" />
     <meta
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
-    <meta name="language" content="en-US" />
+    <meta name="language" content="en" />
     <meta name="revisit-after" content="7 days" />
 
     <link rel="canonical" href="https://ryzmdn.net/" />
 
-    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dhaonb1vn/image/upload/v1783196888/WhatsApp_Image_2026-07-05_at_03.27.41_hz9vld.jpg"
+      fetchpriority="high"
+    />
+
+    <meta property="og:type" content="profile" />
     <meta
       property="og:title"
-      content="Hello Rizz - Personal Link Bio"
+      content="Rizky Ramadhan - Software Engineer | Link Bio"
     />
     <meta
       property="og:description"
-      content="Discover Rizky's portfolio, blog, social media, and creative projects all in one place."
+      content="Official personal link bio of Rizky Ramadhan, a Software Engineer focused on building scalable, efficient web and mobile systems."
     />
-    <meta property="og:image" content="https://ryzmdn.net/images/og-image.png" />
-    <meta property="og:image:alt" content="Rizky's Link Bio Website" />
+    <meta property="og:image" content="https://ryzmdn.net/og-image.png" />
+    <meta property="og:image:secure_url" content="https://ryzmdn.net/og-image.png" />
+    <meta property="og:image:alt" content="Rizky Ramadhan - Software Engineer Link Bio" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:url" content="https://ryzmdn.net/" />
-    <meta property="og:site_name" content="Link Bio" />
-    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Ryzmdn Link Bio" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Rizky" />
+    <meta property="profile:last_name" content="Ramadhan" />
+    <meta property="profile:username" content="ryzmdn" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Link Bio - Connect with Rizky" />
+    <meta
+      name="twitter:title"
+      content="Rizky Ramadhan - Software Engineer | Link Bio"
+    />
     <meta
       name="twitter:description"
-      content="Discover Rizky's portfolio, blog, social media, and creative projects all in one place."
+      content="Official personal link bio of Rizky Ramadhan, Software Engineer. Connect via GitHub, LinkedIn, X, and more."
     />
-    <meta name="twitter:image" content="https://ryzmdn.net/images/og-image.png" />
+    <meta name="twitter:image" content="https://ryzmdn.net/og-image.png" />
     <meta name="twitter:creator" content="@ryzmdn" />
     <meta name="twitter:site" content="@ryzmdn" />
 
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
-    <meta name="apple-mobile-web-app-title" content="Link Bio" />
+    <meta name="apple-mobile-web-app-title" content="Ryzmdn Bio" />
     <meta
       name="theme-color"
       content="#ffffff"
@@ -72,51 +86,87 @@
     />
     <meta
       name="theme-color"
-      content="#000000"
+      content="#09090b"
       media="(prefers-color-scheme: dark)"
     />
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <link rel="dns-prefetch" href="https://open.spotify.com" />
-    <link rel="dns-prefetch" href="https://twitter.com" />
-    <link rel="dns-prefetch" href="https://github.com" />
-
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Rizky",
-        "url": "https://ryzmdn.net/",
-        "image": "https://ryzmdn.net/images/og-image.png",
-        "description": "Full-stack developer, content creator, and open-source enthusiast",
-        "sameAs": [
-          "https://twitter.com/ryzmdn",
-          "https://github.com/ryzmdn",
-        ],
-        "jobTitle": "Developer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Independent"
-        }
-      }
-    </script>
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Link Bio",
-        "url": "https://ryzmdn.net/",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://ryzmdn.net/?q={search_term_string}"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://ryzmdn.net/#person",
+            "name": "Rizky Ramadhan",
+            "alternateName": "ryzmdn",
+            "url": "https://ryzmdn.net/",
+            "image": "https://res.cloudinary.com/dhaonb1vn/image/upload/v1783196888/WhatsApp_Image_2026-07-05_at_03.27.41_hz9vld.jpg",
+            "jobTitle": "Software Engineer",
+            "description": "Software Engineer with a focus on building scalable and efficient web and mobile systems, designed using modern architecture approaches and industry best practices.",
+            "sameAs": [
+              "https://github.com/ryzmdn",
+              "https://www.linkedin.com/in/ryzmdn",
+              "https://x.com/ryzmdn",
+              "https://instagram.com/ryzmdn",
+              "https://www.youtube.com/@ryzmdn",
+              "https://www.tiktok.com/@riyzdev",
+              "https://dribbble.com/ryzmdn",
+              "https://www.behance.net/ryzmdn",
+              "https://codepen.io/ryzmdn",
+              "https://open.spotify.com/user/31y7shgp4loiua7h7acnrklfrvxq?si=d51fbaccc7864309"
+            ],
+            "knowsAbout": [
+              "Software Engineering",
+              "Web Development",
+              "TypeScript",
+              "React",
+              "Clean Architecture",
+              "System Design",
+              "UI/UX Design"
+            ]
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://ryzmdn.net/#webpage",
+            "url": "https://ryzmdn.net/",
+            "name": "Rizky Ramadhan - Software Engineer | Link Bio",
+            "description": "Official personal link bio and social hub of Rizky Ramadhan.",
+            "mainEntity": {
+              "@id": "https://ryzmdn.net/#person"
+            },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://ryzmdn.net/#website",
+            "url": "https://ryzmdn.net/",
+            "name": "Ryzmdn Link Bio",
+            "publisher": {
+              "@id": "https://ryzmdn.net/#person"
+            },
+            "inLanguage": "en"
           }
-        }
+        ]
       }
     </script>
   </head>
@@ -125,7 +175,12 @@
       id="root"
       class="min-w-xs w-full max-w-7xl mx-auto bg-transparent px-4 sm:px-6 lg:px-8"
     ></div>
-    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <noscript>
+      <div style="text-align: center; padding: 2rem; font-family: sans-serif;">
+        <h2>JavaScript Required</h2>
+        <p>Please enable JavaScript in your browser to view this link bio.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

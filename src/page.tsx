@@ -11,13 +11,16 @@ export default function Home() {
 
   return (
     <Layout>
-      <section className="w-full bg-transparent pt-28 pb-16">
+      <section className="w-full bg-transparent pt-28 pb-16" aria-label="Profile information">
         <div className="size-32 mx-auto p-1.5 border border-border rounded-full">
           <div className="shrink-0 size-full overflow-hidden rounded-full transition-all duration-300 group-hover:brightness-50">
             <img
               src="https://res.cloudinary.com/dhaonb1vn/image/upload/v1783196888/WhatsApp_Image_2026-07-05_at_03.27.41_hz9vld.jpg"
-              alt="Profile Picture"
-              loading="lazy"
+              alt="Rizky Ramadhan - Software Engineer Profile"
+              width={128}
+              height={128}
+              loading="eager"
+              fetchPriority="high"
               decoding="async"
               className="size-full object-cover group-hover:scale-150 bg-background shadow-xl ring-1 ring-foreground/10 transition-transform duration-500"
             />
@@ -56,7 +59,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-transparent">
+      <section className="w-full bg-transparent" aria-label="Social media profiles and links">
+        <h2 className="sr-only">Social Profiles</h2>
         <ItemGroup className="flex flex-col gap-y-4">
           {socials
             .filter((s) => !excluded.includes(s.name))

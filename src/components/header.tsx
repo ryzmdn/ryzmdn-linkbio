@@ -73,7 +73,7 @@ export function Header() {
             <Link className="size-4 group-hover:rotate-90 transition-transform duration-300" />
             <span className="hidden text-pretty sm:block">Ryzmdn</span>
             <span className="block text-pretty sm:hidden">Riz</span>
-            <a href="/" className="absolute inset-0" />
+            <a href="/" className="absolute inset-0" aria-label="Go to homepage" />
           </ItemMedia>
           <ItemContent>
             <ItemTitle className="text-[0.5rem] font-normal text-muted-foreground mx-auto sm:text-xs">
@@ -85,7 +85,11 @@ export function Header() {
           <ItemActions className="max-sm:gap-1">
             <ToggleTheme size={smallDevice} />
             <ShareDialog>
-              <Button variant="ghost" size={smallDevice ? "icon-xs" : "icon-sm"}>
+              <Button
+                variant="ghost"
+                size={smallDevice ? "icon-xs" : "icon-sm"}
+                aria-label="Share profile"
+              >
                 <Share />
               </Button>
             </ShareDialog>
