@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -49,11 +50,11 @@
 
 :root {
   --family-sans:
-    "Google Sans", "Google Sans Italic", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Google Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --family-mono:
-    "Google Sans Code", "Google Sans Code Italic", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Google Sans Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -137,15 +138,15 @@
 
 @font-face {
   font-family: "Google Sans";
-  font-style: italic;
+  font-style: normal;
   font-weight: 100 900;
   font-display: swap;
   src: url("@/assets/fonts/GoogleSans.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Google Sans Italic";
-  font-style: normal;
+  font-family: "Google Sans";
+  font-style: italic;
   font-weight: 100 900;
   font-display: swap;
   src: url("@/assets/fonts/GoogleSans-italic.woff2") format("woff2");
@@ -153,15 +154,15 @@
 
 @font-face {
   font-family: "Google Sans Code";
-  font-style: italic;
+  font-style: normal;
   font-weight: 100 900;
   font-display: swap;
   src: url("@/assets/fonts/GoogleSansCode.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Google Sans Code Italic";
-  font-style: normal;
+  font-family: "Google Sans Code";
+  font-style: italic;
   font-weight: 100 900;
   font-display: swap;
   src: url("@/assets/fonts/GoogleSansCode-italic.woff2") format("woff2");
