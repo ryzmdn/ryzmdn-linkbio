@@ -13,9 +13,9 @@ export function Footer() {
       >
         <ul className="flex max-sm:flex-col justify-center items-center gap-x-2 max-sm:gap-y-2 max-sm:text-xs text-sm/6 text-muted-foreground">
           <li>Clean Architecture</li>
-          <li className="text-[0.5rem] max-sm:hidden">&bull;</li>
+          <li className="text-xs opacity-50 max-sm:hidden">&#47;</li>
           <li>Performance Focused</li>
-          <li className="text-[0.5rem] max-sm:hidden">&bull;</li>
+          <li className="text-xs opacity-50 max-sm:hidden">&#47;</li>
           <li>Always Learning</li>
         </ul>
 
