@@ -3,7 +3,7 @@ export function BadgeVerified() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
-      className="absolute -right-9 bottom-1/8 size-6 sm:-right-10 sm:size-7"
+      className="absolute -right-8 bottom-1/8 size-5 sm:-right-9 sm:size-6"
     >
       <polygon
         fill="#0ea5e9"
